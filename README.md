@@ -1,33 +1,33 @@
 # OpenClaw Dashboard
 
-OpenClaw 多 Agent 实时监控面板（FastAPI + Vue）。
+OpenClaw çoklu ajan gerçek zamanlı izleme paneli (FastAPI + Vue).
 
-## 功能
-- 系统状态：Gateway、CPU、Memory、通道状态
-- 任务：本地待办/历史任务
-- 模型用量看板：MiniMax + OpenAI(GPT) + Gemini + GLM
-- 模型配置页面：在网页内保存 API Key 并验证连接
+## Özellikler
+- Sistem durumu: Gateway, CPU, Memory, kanal durumu
+- Görevler: yerel yapılacaklar/geçmiş görevler
+- Model kullanım paneli: MiniMax + OpenAI(GPT) + Gemini + GLM
+- Model yapılandırma sayfası: web içinde API anahtarlarını kaydet ve bağlantıyı doğrula
 
-## 更新说明（2026-02-17）
-- 看板布局优化：适配常见分辨率（1K/2K/4K/笔记本），卡片在桌面与移动端更稳定。
-- 模型用量看板升级：支持多模型 Tab 结构（MiniMax / OpenAI / Gemini / GLM），便于后续继续扩展。
-- 模型配置交互优化：API Key 支持掩码填充态与修改后保存生效，降低误操作。
-- 任务区与操作区样式统一：减少留白与无效滚动，提升信息密度和可读性。
-- 发布包脱敏：移除 `.env`、日志、缓存、构建产物，默认不包含本机敏感信息。
+## Güncelleme Notları (2026-02-17)
+- Panel düzeni optimizasyonu: yaygın çözünürlükleri destekler (1K/2K/4K/Notebook), kartlar masaüstü ve mobilde daha kararlıdır.
+- Model kullanım paneli yükseltmesi: çoklu model sekme yapısı eklendi (MiniMax / OpenAI / Gemini / GLM), gelecekte genişletmeyi kolaylaştırır.
+- Model yapılandırma etkileşimi iyileştirildi: API anahtarları maskeleme dolgu durumu ile gösterilir ve değişiklikten sonra kaydetme etkili hale gelir; yanlış kullanım azalır.
+- Görev alanı ve işlem alanı stil birleştirildi: boşluk azaltıldı ve gereksiz kaydırma önlendi; bilgi yoğunluğu ve okunabilirlik arttı.
+- Yayın paketi maskeleme: `.env`, günlükler, önbellek, derleme çıktıları kaldırıldı; varsayılan olarak yerel hassas bilgileri içermez.
 
-## 5 分钟启动（新手）
+## 5 Dakikada Başlatma (Yeni başlayanlar)
 
-### macOS（推荐）
-1. 双击 `/Users/macmini/openclaw/openclaw-dashboard/scripts/install-dashboard.command`
-2. 安装完成后打开终端执行：
+### macOS (Önerilen)
+1. `/Users/macmini/openclaw/openclaw-dashboard/scripts/install-dashboard.command` dosyasını çift tıklayın
+2. Kurulum tamamlandıktan sonra terminali açıp şunu çalıştırın:
 ```bash
 cd /Users/macmini/openclaw/openclaw-dashboard
 source .venv/bin/activate
 ./start.sh
 ```
-3. 浏览器打开 `http://localhost:18790`
-4. 默认账号：`admin` / `admin123`
-5. 首次登录后建议立即修改密码
+3. Tarayıcıda `http://localhost:18790` adresini açın
+4. Varsayılan hesap: `admin` / `admin123`
+5. İlk girişte şifrenizi hemen değiştirmeyi öneririz
 
 ### Linux
 ```bash
@@ -45,30 +45,30 @@ powershell -ExecutionPolicy Bypass -File .\scripts\install-dashboard.ps1
 python .\server.py
 ```
 
-## 模型用量如何配置
-1. 登录后进入主页面
-2. 在“模型用量看板”卡片右上角点击 `模型设置`
-3. 按需填写：MiniMax / OpenAI / Gemini / GLM 的 API 信息
-4. 点 `验证`，通过后点 `保存配置`
+## Model Kullanımı Nasıl Yapılandırılır
+1. Giriş yaptıktan sonra ana sayfaya gidin
+2. "Model kullanım paneli" kartının sağ üst köşesindeki `Model Ayarları` butonuna tıklayın
+3. İstediğiniz şekilde doldurun: MiniMax / OpenAI / Gemini / GLM için API bilgileri
+4. `Doğrula`ya tıklayın; başarılı olursa `Yapılandırmayı Kaydet`e basın
 
-### 各模型说明
-- MiniMax：支持真实计数（已用/配额/占比）
-- OpenAI(GPT)：支持 Usage API 请求量统计
-- Gemini：当前展示状态摘要（计数源待接入）
-- GLM：当前展示状态摘要（计数源待接入）
+### Her Modelin Açıklaması
+- MiniMax: Gerçek sayım desteği vardır (kullanılan / kota / kullanım oranı)
+- OpenAI(GPT): Usage API istek sayısı istatistiği destekler
+- Gemini: şu anda durum özeti gösterilir (sayaç kaynağı henüz entegre edilmedi)
+- GLM: şu anda durum özeti gösterilir (sayaç kaynağı henüz entegre edilmedi)
 
-## 配置文件
-- 环境变量示例：`/Users/macmini/openclaw/openclaw-dashboard/.env.example`
-- 实际环境变量：`/Users/macmini/openclaw/openclaw-dashboard/.env`
-- 模型集成配置：`~/.openclaw/dashboard_integrations.json`
+## Yapılandırma Dosyaları
+- Ortam değişkeni örneği: `/Users/macmini/openclaw/openclaw-dashboard/.env.example`
+- Gerçek ortam değişkenleri: `/Users/macmini/openclaw/openclaw-dashboard/.env`
+- Model entegrasyonu ayarları: `~/.openclaw/dashboard_integrations.json`
 
-## 常见问题
-- `Invalid or expired token`：重新登录即可
-- 页面无数据：确认 Gateway 进程在运行
-- MiniMax 空数据：检查 GroupId / Quota URL / API Key 是否正确
-- API Key 安全：前端只显示掩码，密钥保存在本机文件
+## Sık Sorulan Sorular
+- `Invalid or expired token`: yeniden giriş yapın
+- Sayfada veri yok: Gateway işleminin çalıştığını doğrulayın
+- MiniMax boş veri: GroupId / Quota URL / API Key değerlerinin doğru olduğundan emin olun
+- API Key güvenliği: ön yüzde yalnızca maske gösterilir, anahtar yerel dosyada saklanır
 
-## 开发命令
+## Geliştirme Komutları
 ```bash
 cd /Users/macmini/openclaw/openclaw-dashboard/frontend
 npm run dev
@@ -80,8 +80,8 @@ source .venv/bin/activate
 python server.py
 ```
 
-## 支持项目
+## Destekleyen Proje
 
-如果这个项目对你有帮助，欢迎请我喝杯咖啡。
+Bu proje size faydalıysa, bana bir kahve ısmarlamaktan memnun olurum.
 
-![微信赞赏码](assets/social/wechat-donate.png)
+![WeChat bağış kodu](assets/social/wechat-donate.png)

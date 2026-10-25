@@ -80,8 +80,4 @@ source .venv/bin/activate
 python server.py
 ```
 
-## Destekleyen Proje
 
-Bu proje size faydalıysa, bana bir kahve ısmarlamaktan memnun olurum.
-
-![WeChat bağış kodu](assets/social/wechat-donate.png)
